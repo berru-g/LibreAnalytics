@@ -458,9 +458,6 @@ function getCountryCodeSimple($countryName)
             </div>
 
 
-
-
-
             <!-- Bouton de déconnexion -->
             <div class="logout-section">
 
@@ -592,7 +589,7 @@ function getCountryCodeSimple($countryName)
             <header>
                 <div class="container">
                     <div class="header-content">
-                        <h1>Smart Pixel Analytics :
+                        <h1>LibreAnalytics :
                             <?php
                             $currentSite = array_filter($userSites, fn($s) => $s['id'] == $selectedSiteId);
                             $currentSite = reset($currentSite);
@@ -618,7 +615,7 @@ function getCountryCodeSimple($countryName)
                     <div class="tabs">
                         <div class="tab active" onclick="openTab('overview')">Aperçu</div>
                         <div class="tab" onclick="openTab('geography')">Géographie</div>
-                        <div class="tab" onclick="openTab('traffic')">Trafic</div>
+                        <!--<div class="tab" onclick="openTab('traffic')">Trafic</div>-->
                         <div class="tab" onclick="openTab('devices')">Appareils</div>
                         <div class="tab" onclick="openTab('content')">Contenu</div>
                         <div class="tab" onclick="openTab('sessions')">Sessions</div>
@@ -1320,7 +1317,7 @@ function getCountryCodeSimple($countryName)
         <dialog id="modalParametres" class="settings-modal">
             <div class="modal-content">
                 <h2>Besoin d'aide ?</h2>
-                <p>Trouvez toutes les réponses dans la documentation complète ou accédez aux autres sections utiles :</p>
+                <p>Doc, Api, guide d'utilisation, toute les infos sont ici :</p>
 
                 <nav class="modal-nav">
                     <a href="../../doc/" class="modal-link primary" id="linkToDoc">
@@ -1328,34 +1325,36 @@ function getCountryCodeSimple($countryName)
                             <path d="M4 20V8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
                             <path d="M4 11h16" />
                         </svg>
-                        <span class="subtitle"> Doc complète. Installation, configuration...</span>
+                        <span class="subtitle">Doc complète. Installation, config...</span>
                     </a>
 
-                    <a href="account.php" class="modal-link"> <!-- adapte selon ton URL réelle -->
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                            <circle cx="12" cy="7" r="4" />
+                    <a href="account.php" class="modal-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud" viewBox="0 0 16 16">
+                            <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
                         </svg>
-                        <span class="subtitle">L'API et sa Documentation</span>
+                        <span class="subtitle">L'API et son guide d'utilisation.</span>
                     </a>
 
-                    <a href="../contact/" class="modal-link"> <!-- adapte selon ton URL réelle -->
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2" />
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    <a href="../../chat/" class="modal-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chat-square-text" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                            <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
                         </svg>
-                        <span class="subtitle">Contact / Support, signaler un bug</span>
+                        <span class="subtitle">Le chat </span>
                     </a>
-
 
                 </nav>
 
-                <div class="modal-actions">
+                <!--<div class="modal-actions">
                     <button type="button" id="btnCancel" class="btn-cancel">Annuler</button>
-                </div>
+                </div>-->
             </div>
         </dialog>
     </div>
+
+    <p style="text-align:center;color:grey;">LibreAnalytics <?= APP_VERSION ?> by <a href="https://gael-berru.com" target="_blank" style="text-decoration:none;color:#9d86ff">berru-g</a> 24</p>
+
+
 
     <?php include "aissistant.php" ?>
 
@@ -2105,7 +2104,7 @@ function getCountryCodeSimple($countryName)
                 });
             }
 
-            // Optionnel : fermer en cliquant sur le backdrop
+            //  fermer en cliquant sur le backdrop
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.close();
@@ -2191,7 +2190,8 @@ function getCountryCodeSimple($countryName)
             });
         });
 
-        // Fonction de copie du code
+        // Fonction pour copier le code d'integration
+        // séparé du script pour eviter les conflits normalement !
         function copyCode() {
             const codeElement = document.querySelector('.integration-code');
             if (!codeElement) return;
@@ -2214,16 +2214,14 @@ function getCountryCodeSimple($countryName)
             });
         }
 
-
         // Fonction pour copier le code SP_
-        // séparé du script pour eviter les conflits normalement !
         function copyTrackingCode(code) {
             navigator.clipboard.writeText(code)
                 .then(() => {
                     Swal.fire({
                         icon: 'success',
                         title: 'Copié !',
-                        text: 'Le code SmartPixel a été copié.',
+                        text: 'Votre SmartPixel a été copié.',
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
@@ -2245,7 +2243,7 @@ function getCountryCodeSimple($countryName)
                 icon: 'info',
                 showCancelButton: true,
                 confirmButtonColor: '#f87171', // Rouge pour le bouton "Oui"
-                cancelButtonColor: '#34d399', // Bleu pour "Annuler"
+                cancelButtonColor: '#9d86ff', // Bleu pour "Annuler"
                 confirmButtonText: 'Oui',
                 cancelButtonText: 'Annuler'
             }).then((result) => {
