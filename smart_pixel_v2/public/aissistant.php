@@ -1,15 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../includes/config.php';
-require_once __DIR__ . '/../includes/auth.php';
-
-// Vérifie si connecté
-if (!Auth::isLoggedIn()) {
-    // Redirige UNIQUEMENT si pas connecté
-    header('Location: login.php');
-    exit;
-}
-
 // 2. Extraire le nom avant @ dans l'email
 $emailParts = explode('@', $user['email']);
 $name = $emailParts[0]; // Prénom = partie avant le "@"
@@ -32,12 +22,11 @@ $period = $period ?? 30;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LibreAnalytics Assistant</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* CSS complet ci-dessous */
         :root {
-            --primary-color: #86acff;
+            --first-color: #86acff;
             --just-primary: rgba(156, 134, 255, 0.53);
              --back-color: #f5f5f5;
             --text-color: #333;
@@ -47,7 +36,7 @@ $period = $period ?? 30;
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --primary-color: #8688ff;
+                --first-color: #8688ff;
                 --just-primary: rgba(140, 134, 255, 0.5);
                  --back-color: #2b2a2a;
                 --text-color: #ffffff;
@@ -64,7 +53,7 @@ $period = $period ?? 30;
         }
 
         .ai-toggle-btn {
-            background: var(--primary-color);
+            background: var(--first-color);
             color: white;
             border: none;
             width: 50px;
@@ -87,7 +76,7 @@ $period = $period ?? 30;
             position: absolute;
             top: -5px;
             right: -5px;
-            background: #ffe66d;
+            background: #ff6d6d;
             color: white;
             border-radius: 50%;
             width: 20px;
@@ -126,7 +115,7 @@ $period = $period ?? 30;
         }
 
         .ai-header {
-            background: var(--primary-color);
+            background: var(--first-color);
             color: white;
             padding: 8px;
             display: flex;
@@ -180,7 +169,7 @@ $period = $period ?? 30;
 
         .ai-message.user {
             margin-left: auto;
-            background: var(--primary-color);
+            background: var(--first-color);
             color: white;
             border-bottom-right-radius: 4px;
         }
@@ -211,14 +200,14 @@ $period = $period ?? 30;
             border: 1px solid grey;
             border-radius: 20px;
             background: transparent;
-            color: var(--primary-color);
+            color: var(--first-color);
             cursor: pointer;
             font-size: 0.9rem;
             transition: all 0.2s;
         }
 
         .quick-question:hover {
-            background: var(--primary-color);
+            background: var(--first-color);
             color: white;
         }
 
@@ -239,11 +228,11 @@ $period = $period ?? 30;
         }
 
         #aiInput:focus {
-            border-color: var(--primary-color);
+            border-color: var(--first-color);
         }
 
         #aiSend {
-            background: var(--primary-color);
+            background: var(--first-color);
             color: white;
             border: none;
             width: 45px;
@@ -264,7 +253,7 @@ $period = $period ?? 30;
         .typing-indicator span {
             width: 8px;
             height: 8px;
-            background: var(--primary-color);
+            background: var(--first-color);
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -335,7 +324,7 @@ $period = $period ?? 30;
         }
         a {
             text-decoration: none;
-            color: var(--primary-color);
+            color: var(--first-color);
             font-weight: 700;
         }
     </style>
@@ -352,7 +341,7 @@ $period = $period ?? 30;
 
         <div class="ai-panel" id="aiPanel">
             <div class="ai-header">
-                <h3>LibreAnalytics Assistant</h3>
+                <h3>LibreAssistant</h3>
                 <button class="ai-close" id="aiClose">×</button>
             </div>
 
@@ -377,7 +366,7 @@ $period = $period ?? 30;
                     <input
                         type="text"
                         id="aiInput"
-                        placeholder="Posez votre question (ex: 'Quelles sont mes meilleures sources de trafic ?')..."
+                        placeholder="Mots clefs : api, utm, code sp ..."
                         autocomplete="off">
                     <button id="aiSend"><i class="fas fa-paper-plane"></i></button>
                 </div>
@@ -399,10 +388,12 @@ $period = $period ?? 30;
         };
 
         // URL de la documentation
+        const DOC_SITE = 'https://gael-berru.com/LibreAnalytics/doc/';
         const DOC_URL = 'https://raw.githubusercontent.com/berru-g/LibreAnalytics/refs/heads/main/readme.md';
         const DOC_API_URL = 'https://api.github.com/repos/berru-g/LibreAnalytics/readme';
         let docSections = {};
-
+        //const userName = userEmail.split('@')[0] || 'Utilisateur';
+        
         // Fonction pour récupérer et parser la documentation (version API GitHub)
         async function fetchDoc() {
             try {
@@ -438,7 +429,7 @@ $period = $period ?? 30;
                 docSections = Object.keys(sections).length > 0 ? sections : {
                     'documentation': {
                         title: 'Documentation',
-                        content: `<p><a href="https://gael-berru.com/LibreAnalytics/doc/" target="_blank">Consultez la documentation complète</a>.</p>`,
+                        content: `<p><a href="${DOC_SITE}" target="_blank">Consultez la documentation complète</a>.</p>`,
                         level: 2
                     }
                 };
@@ -447,7 +438,7 @@ $period = $period ?? 30;
                 docSections = {
                     'documentation': {
                         title: 'Documentation',
-                        content: `<p>Documentation indisponible. <a href="https://gael-berru.com/LibreAnalytics/doc/" target="_blank">Voir sur GitHub</a>.</p>`,
+                        content: `<p>Documentation indisponible. <a href="${DOC_SITE}" target="_blank">Voir sur GitHub</a>.</p>`,
                         level: 2
                     }
                 };
@@ -465,13 +456,13 @@ $period = $period ?? 30;
                 sendBtn: document.getElementById('aiSend'),
             };
             let isPanelOpen = false;
-
+ 
             function togglePanel() {
                 isPanelOpen = !isPanelOpen;
                 elements.panel.classList.toggle('active', isPanelOpen);
                 if (isPanelOpen && !document.querySelector('.ai-message')) {
                     setTimeout(() => {
-                        addMessage('bot', "Bonjour ! Comment puis-je vous aider ?");
+                        addMessage('bot', "Bonjour <?= htmlspecialchars($_SESSION['user_email'] ?? 'UserLibre') ?>! Comment puis-je vous aider ?");
                     }, 300);
                 }
             }
@@ -643,12 +634,12 @@ $period = $period ?? 30;
                         return `
                        <p>📚 ${section.title} </p><br>
                        <p> ${section.content}</p><br>
-                        <p>[<a href="https://gael-berru.com/LibreAnalytics/doc/#${encodeURIComponent(title)}" target="_blank">Lire la suite</a>]</p>
+                        <p>[<a href="${DOC_SITE}#${encodeURIComponent(title)}" target="_blank">Lire la suite</a>]</p>
                     `;
                     }
                 }
 
-                return `Je ne peux pas répondre. Consultez la <a href="https://gael-berru.com/LibreAnalytics/doc/" target="_blank">documentation</a>.`;
+                return `Je ne peux pas répondre. Consultez la <a href="${DOC_SITE}" target="_blank">documentation</a>.`;
             }
 
             async function askAI(question) {
@@ -696,9 +687,6 @@ $period = $period ?? 30;
             AIAssistant.askAI(question);
         }
     </script>
-
-
-
 
 </body>
 
