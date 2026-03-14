@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Installation](https://img.shields.io/badge/Installation-1_ligne-brightgreen)](https://gael-berru.com/LibreAnalytics/#installation)
 [![Made in France](https://img.shields.io/badge/Made%20in-France-0055A4?logo=fr)](https://gael-berru.com)
-[![Open Source](https://img.shields.io/badge/Open%20Source-95%25-important?logo=github)](https://github.com/berru-g/LibreAnalytics)
+[![Open Source](https://img.shields.io/badge/Open%20Source-100%25-important?logo=github)](https://github.com/berru-g/LibreAnalytics)
 [![No Cookies](https://img.shields.io/badge/No%20Cookies-RGPD%20Friendly-blueviolet)](https://gael-berru.com/LibreAnalytics/)
 [![Lightweight](https://img.shields.io/badge/Lightweight-4KB-success?logo=lightning)](https://gael-berru.com/LibreAnalytics/)
 [![Sovereign](https://img.shields.io/badge/Sovereign-No%20GAFAM-007EC6?logo=europeanunion)](https://gael-berru.com/LibreAnalytics/)
@@ -12,12 +12,19 @@
 
 **Alternative française et open source à Google Analytics**
 
-Analysez votre trafic sans compromettre la vie privée de vos visiteurs, avec un outil 100% européen
+Analysez votre trafic sans compromettre la vie privée de vos visiteurs, avec un outil 100% européen.
 
   [Dashboard](https://gael-berru.com/LibreAnalytics/smart_pixel_v2/public/dashboard.php) - [Api](https://gael-berru.com/LibreAnalytics/smart_pixel_v2/public/account.php) - [Doc](https://gael-berru.com/LibreAnalytics/doc/) - [Chat](https://gael-berru.com/LibreAnalytics/chat/) - [Articles](https://gael-berru.com/LibreAnalytics/articles/)
 
 
 <img src="https://gael-berru.com/img/demo_dashboard.gif" style="width:90%; display:flex;margin:20px auto; border-radius: 12px;">
+
+
+### Soutenir le projet
+Vous pouvez sponsoriser LibreAnalytics via :
+- GitHub Sponsors - SOON
+- **Solana** : `D6khWoqvc2zX46HVtSZcNrPumnPLPM72SnSuDhBrZeTC`
+- [Dont en BTC, SOL, USDC...](https://gael-berru.com/donation.html)
 
 
 Disponible
